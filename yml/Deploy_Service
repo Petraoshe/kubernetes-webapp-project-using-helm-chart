@@ -1,0 +1,86 @@
+# # Wordpress Deployment File
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   creationTimestamp: null
+#   labels:
+#     app: wordpress
+#   name: wordpress
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: wordpress
+#   strategy: {}
+#   template:
+#     metadata:
+#       creationTimestamp: null
+#       labels:
+#         app: wordpress
+#     spec:
+#       containers:
+#       - image: wordpress:5.1.1-php7.3-apache
+#         name: wordpress
+#         resources: {}
+#       dnsPolicy: ClusterFirst
+#       restartPolicy: Always
+# status: {}
+
+
+# # Wordpress Service File
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   creationTimestamp: null
+#   labels:
+#     app: wordpress
+#   name: wordpress
+# spec:
+#   ports:
+#   - port: 80
+#     protocol: TCP
+#     targetPort: 80
+#     nodePort: 32323
+#   selector:
+#     app: wordpress
+#   type: NodePort
+# status:
+#   loadBalancer: {}
+
+
+#   # MySQL Deployment file
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   creationTimestamp: null
+#   labels:
+#     app: mysql
+#   name: mysql
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: mysql
+#   strategy: {}
+#   template:
+#     metadata:
+#       creationTimestamp: null
+#       labels:
+#         app: mysql
+#     spec:
+#       containers:
+#       - env:
+#         - name: MYSQL_ROOT_PASSWORD
+#           value: redhat
+#         - name: MYSQL_DATABASE
+#           value: wpdb
+#         - name: MYSQL_USER
+#           value: anuddeeph
+#         - name: MYSQL_PASSWORD
+#           value: redhat
+#         image: mysql:5.7
+#         name: mysql
+#         resources: {}
+#       dnsPolicy: ClusterFirst
+#       restartPolicy: Always
+# status: {}
